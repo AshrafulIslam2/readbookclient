@@ -5,7 +5,7 @@ const HommeBanner = () => {
   return (
     <div className="hero  bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="relative">
+        <div className="relative mr-8">
           <img
             alt=""
             src=" https://covers.openlibrary.org/b/id/13007273-L.jpg"

@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const links = [{ name: "Home" }, { name: "Blogs" }, { name: "Allbooks" }];
   return (
-    <div className="bg-black">
-      <div className="navbar bg-black max-w-[1040px] mx-auto min-w-max">
+    <div className="bg-black  max-w-[1040px] mx-auto min-w-max">
+      <div className="navbar bg-black">
         <div className="flex-1">
           <Link className="btn btn-ghost normal-case text-xl text-white">
             BookS
