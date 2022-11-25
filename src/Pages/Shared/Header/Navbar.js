@@ -2,7 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const links = [{ name: "Home" }, { name: "Blogs" }, { name: "Allbooks" }];
+  const links = [
+    { name: "Home", path: "/" },
+    { name: "Blogs", path: "/blog" },
+    { name: "Allbooks", path: "/allbooks" },
+  ];
   return (
     <div className="bg-black  max-w-[1040px] mx-auto min-w-max">
       <div className="navbar bg-black">
@@ -14,7 +18,9 @@ const Navbar = () => {
         <div className="flex-none">
           <ul className="menu menu-horizontal p-0 text-white flex items-center">
             {links.map((link) => (
-              <Link className="mx-2">{link.name}</Link>
+              <Link to={link.path} className="mx-2">
+                {link.name}
+              </Link>
             ))}
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">

@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "../../../Components/Button/Button";
+import { Link } from "react-router-dom";
 
-const ShowCatagorisHome = ({ catagory }) => {
+const ShowCatagorisHome = ({ catagory, SetsignalProdutcs }) => {
   return (
     <div className="">
       <div>
@@ -24,7 +24,10 @@ const ShowCatagorisHome = ({ catagory }) => {
               </span>
             </div>
             <p className="dark:text-gray-100 my-4">
-              {product.productsdetails.slice(0, 100)}...
+              {product.productsdetails.length < 100
+                ? product.productsdetails
+                : product.productsdetails.slice(0, 100)}
+              ...
             </p>
             <div className="flex justify-between text-base font-serif font-semibold">
               <p className="mr-3">
@@ -36,12 +39,18 @@ const ShowCatagorisHome = ({ catagory }) => {
               <p>{product.buletick}</p>
               <p className="text-base-300">{product.uploaddate}</p>
             </div>
-            <Button>Book Now</Button>
+            <label
+              htmlFor="my-modal-6"
+              className="btn"
+              onClick={() => SetsignalProdutcs(product)}
+            >
+              open modal
+            </label>
           </div>
         ))}
       </div>
       <button className="w-full bg-teal-700 text-2xl font-bold text-white py-3">
-        See More books
+        <Link to={`catagories/${catagory._id}`}>See More</Link>
       </button>
     </div>
   );

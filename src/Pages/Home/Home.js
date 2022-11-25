@@ -1,12 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import Loding from "../../Components/Button/Loding";
 import getCatagories from "../../hooks/UseCatagories";
+import BookingModal from "../Modal/BookingModal";
 import ShowCatagorisHome from "./CatagoryForHome/ShowCatagorisHome";
 import HommeBanner from "./HomeBanner/HommeBanner";
 import PopularProduct from "./PopularProducts/PopularProduct";
 
 const Home = () => {
+  const [signalProdutcs, SetsignalProdutcs] = useState(null);
   const {
     data: catagories = [],
     isLoading,
@@ -19,6 +21,8 @@ const Home = () => {
   if (isLoading) {
     return <Loding></Loding>;
   }
+  refetch();
+  console.log(signalProdutcs);
   return (
     <div className="max-w-[1040px] mx-auto ">
       <HommeBanner></HommeBanner>
@@ -27,8 +31,12 @@ const Home = () => {
         <ShowCatagorisHome
           key={catagory._id}
           catagory={catagory}
+          SetsignalProdutcs={SetsignalProdutcs}
         ></ShowCatagorisHome>
       ))}
+      {signalProdutcs && (
+        <BookingModal signalProdutcs={signalProdutcs}></BookingModal>
+      )}
     </div>
   );
 };
