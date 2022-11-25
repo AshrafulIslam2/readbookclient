@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { authcontext } from "../../../AuthoContext/AuthContextProvider";
 
 const ShowCatagorisHome = ({ catagory, SetsignalProdutcs }) => {
+  const { user } = useContext(authcontext);
   return (
     <div className="">
       <div>
@@ -41,10 +43,12 @@ const ShowCatagorisHome = ({ catagory, SetsignalProdutcs }) => {
             </div>
             <label
               htmlFor="my-modal-6"
-              className="btn"
+              className={`${
+                user?.email ? "visible" : "hidden"
+              }  bg-teal-700 px-4 text-xl text-white rounded btn pt-`}
               onClick={() => SetsignalProdutcs(product)}
             >
-              open modal
+              Book Now
             </label>
           </div>
         ))}

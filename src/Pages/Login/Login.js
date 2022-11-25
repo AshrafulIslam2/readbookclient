@@ -79,7 +79,7 @@ const Login = () => {
                 </span>
                 <input
                   type="submit"
-                  value="Sign up"
+                  value="Login"
                   className="input input-sm rounded-none input-accent font-serif bg-teal-700 block mx-auto mt-4 text-base font-bold text-white"
                 />
               </form>

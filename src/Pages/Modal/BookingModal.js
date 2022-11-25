@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { authcontext } from "../../AuthoContext/AuthContextProvider";
 
 const BookingModal = ({ signalProdutcs }) => {
-  console.log(signalProdutcs);
+  const { user } = useContext(authcontext);
   return (
     <>
       <input type="checkbox" id="my-modal-6" className="modal-toggle" />
@@ -21,6 +22,7 @@ const BookingModal = ({ signalProdutcs }) => {
               type="email"
               name="email"
               placeholder="Email"
+              value={user?.email ? user.email : "no email found"}
               className="input input-bordered my-3 input-sm w-full max-w-xs"
             />
             <input
