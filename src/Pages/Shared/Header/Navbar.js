@@ -1,12 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { authcontext } from "../../../AuthoContext/AuthContextProvider";
 
 const Navbar = () => {
+  //const location = useLocation();
+  const navigate = useNavigate();
+  //const from = location?.state?.from?.pathname || "/";
   const links = [
     { name: "Home", path: "/" },
     { name: "Blogs", path: "/blog" },
     { name: "Allbooks", path: "/allbooks" },
   ];
+  const { user, logout } = useContext(authcontext);
+  const logoutuser = () => {
+    logout()
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
   return (
     <div className="bg-black  max-w-[1040px] mx-auto min-w-max">
       <div className="navbar bg-black">
@@ -32,8 +46,20 @@ const Navbar = () => {
                 tabIndex={0}
                 className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-black rounded-box w-52"
               >
-                <Link className="mx-2"> Login</Link>
-                <Link className="mx-2"> SignUp</Link>
+                {user?.email ? (
+                  <Link className="mx-2" onClick={logoutuser}>
+                    Logout
+                  </Link>
+                ) : (
+                  <>
+                    <Link to="/login" className="mx-2">
+                      Login
+                    </Link>
+                    <Link to="/registration" className="mx-2">
+                      SignUp
+                    </Link>
+                  </>
+                )}
                 <Link className="mx-2">Dashboard</Link>
               </ul>
             </div>

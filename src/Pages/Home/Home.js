@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { authcontext } from "../../AuthoContext/AuthContextProvider";
 import Loding from "../../Components/Button/Loding";
 import getCatagories from "../../hooks/UseCatagories";
 import BookingModal from "../Modal/BookingModal";
@@ -9,11 +10,12 @@ import PopularProduct from "./PopularProducts/PopularProduct";
 
 const Home = () => {
   const [signalProdutcs, SetsignalProdutcs] = useState(null);
+  const { user } = useContext(authcontext);
+  console.log(user);
   const {
     data: catagories = [],
     isLoading,
     refetch,
-    isError,
   } = useQuery({
     queryKey: ["catagoris"],
     queryFn: getCatagories,
