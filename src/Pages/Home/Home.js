@@ -7,6 +7,8 @@ import BookingModal from "../Modal/BookingModal";
 import ShowCatagorisHome from "./CatagoryForHome/ShowCatagorisHome";
 import HommeBanner from "./HomeBanner/HommeBanner";
 import PopularProduct from "./PopularProducts/PopularProduct";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
   const [signalProdutcs, SetsignalProdutcs] = useState(null);
@@ -39,6 +41,7 @@ const Home = () => {
       {signalProdutcs && (
         <BookingModal signalProdutcs={signalProdutcs}></BookingModal>
       )}
+      <ToastContainer />
     </div>
   );
 };

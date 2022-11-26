@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import BookingModal from "../Modal/BookingModal";
 
 const AllProductsCatagorisWise = () => {
@@ -53,6 +54,7 @@ const AllProductsCatagorisWise = () => {
       {signalProdutcs && (
         <BookingModal signalProdutcs={signalProdutcs}></BookingModal>
       )}
+      <ToastContainer />
     </div>
   );
 };
