@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import axios, { isCancel, AxiosError } from "axios";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
@@ -7,6 +8,7 @@ import { authcontext } from "../../AuthoContext/AuthContextProvider";
 
 const Registration = () => {
   const location = useLocation();
+  const imageHotKey = process.env.REACT_APP_imgbb_key;
   const navigate = useNavigate();
   const from = location?.state?.from?.pathname || "/";
   const { createNewUser } = useContext(authcontext);
@@ -14,19 +16,41 @@ const Registration = () => {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
+    const email = data.email;
     createNewUser(data.email, data.password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
-        toast.success("Registration done successfully!");
-        navigate(from, { replace: true });
+        axios
+          .post("http://localhost:4000/user", {
+            email: data.email,
+            role: data.role,
+          })
+          .then((data) => {
+            getToken(email);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.error(error);
       });
+
+    const getToken = (email) => {
+      axios.get(`http://localhost:4000/jwt?email=${email}`).then((data) => {
+        console.log("data", data);
+        console.log("ac", data.data.accessToken);
+        localStorage.setItem("accessToken", data.data.accessToken);
+        toast.success("Registration done successfully!");
+        reset();
+        navigate(from, { replace: true });
+      });
+    };
   };
   return (
     <>

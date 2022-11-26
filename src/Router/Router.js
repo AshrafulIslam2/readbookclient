@@ -4,6 +4,7 @@ import AllProductsCatagorisWise from "../Pages/AllproductsCatagorisWies/AllProdu
 import Blog from "../Pages/Blog/Blog";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
+import Profile from "../Pages/Profile/Profile";
 import Registration from "../Pages/Registration/Registration";
 import PrivateRoute from "../PrivetRoute/PrivateRoute";
 
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog></Blog>,
+      },
+      {
+        path: "/profile",
+        element: <Profile></Profile>,
       },
     ],
   },

@@ -8,6 +8,11 @@ const BookingModal = ({ signalProdutcs }) => {
       <input type="checkbox" id="my-modal-6" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
+          <div className="modal-action">
+            <label htmlFor="my-modal-6" className="btn">
+              Close
+            </label>
+          </div>
           <h1 className="text-xl  text-center font-bold text-black font-serif">
             Your Booking details
           </h1>
@@ -54,12 +59,8 @@ const BookingModal = ({ signalProdutcs }) => {
               className="input input-bordered my-3 input-sm w-full max-w-xs"
               value={signalProdutcs.resaleprice}
             />
+            <input type="submit" className="btn block w-full bg-teal-700" />
           </form>
-          <div className="modal-action">
-            <label htmlFor="my-modal-6" className="btn">
-              Close
-            </label>
-          </div>
         </div>
       </div>
     </>

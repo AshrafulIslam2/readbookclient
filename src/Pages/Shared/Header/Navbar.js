@@ -39,7 +39,7 @@ const Navbar = () => {
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full ">
-                  <img alt="" src="https://placeimg.com/80/80/people" />
+                  <img alt="" src={user?.photoURL ? user.photoURL : ""} />
                 </div>
               </label>
               <ul
@@ -61,6 +61,9 @@ const Navbar = () => {
                   </>
                 )}
                 <Link className="mx-2">Dashboard</Link>
+                <Link className="mx-2" to="/profile">
+                  Profile
+                </Link>
               </ul>
             </div>
           </ul>
