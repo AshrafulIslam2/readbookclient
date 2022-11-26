@@ -1,16 +1,22 @@
-import React, { useContext } from "react";
-import axios, { isCancel, AxiosError } from "axios";
+import React, { useContext, useState } from "react";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { authcontext } from "../../AuthoContext/AuthContextProvider";
+import useToken from "../../hooks/useToken";
 
 const Registration = () => {
   const location = useLocation();
-  const imageHotKey = process.env.REACT_APP_imgbb_key;
+  const [createdemail, SetCreateduseremail] = useState("");
+  const [token] = useToken(createdemail);
   const navigate = useNavigate();
   const from = location?.state?.from?.pathname || "/";
+  if (token) {
+    toast.success("Registration done successfully!");
+    navigate(from, { replace: true });
+  }
   const { createNewUser } = useContext(authcontext);
   const {
     register,
@@ -25,13 +31,15 @@ const Registration = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
+        //save user
         axios
           .post("http://localhost:4000/user", {
             email: data.email,
             role: data.role,
           })
           .then((data) => {
-            getToken(email);
+            SetCreateduseremail(email);
+            reset();
           })
           .catch((error) => {
             console.log(error);
@@ -40,17 +48,6 @@ const Registration = () => {
       .catch((error) => {
         console.error(error);
       });
-
-    const getToken = (email) => {
-      axios.get(`http://localhost:4000/jwt?email=${email}`).then((data) => {
-        console.log("data", data);
-        console.log("ac", data.data.accessToken);
-        localStorage.setItem("accessToken", data.data.accessToken);
-        toast.success("Registration done successfully!");
-        reset();
-        navigate(from, { replace: true });
-      });
-    };
   };
   return (
     <>

@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import axios, { isCancel, AxiosError } from "axios";
 import React, { useContext } from "react";
 import { authcontext } from "../../AuthoContext/AuthContextProvider";
 
@@ -10,7 +9,11 @@ const Mybooking = () => {
   const { data: bookings = [] } = useQuery({
     queryKey: ["userbookininfo", user?.email],
     queryFn: async () => {
-      const res = await fetch(url);
+      const res = await fetch(url, {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
       const data = res.json();
       return data;
     },
