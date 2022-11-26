@@ -36,6 +36,7 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
+
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full ">
@@ -47,9 +48,17 @@ const Navbar = () => {
                 className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-black rounded-box w-52"
               >
                 {user?.email ? (
-                  <Link className="mx-2" onClick={logoutuser}>
-                    Logout
-                  </Link>
+                  <>
+                    <Link className="mx-2" onClick={logoutuser}>
+                      Logout
+                    </Link>
+                    <Link className="mx-2" to="/dashboard">
+                      Dashboard
+                    </Link>
+                    <Link className="mx-2" to="/profile">
+                      Profile
+                    </Link>
+                  </>
                 ) : (
                   <>
                     <Link to="/login" className="mx-2">
@@ -60,12 +69,28 @@ const Navbar = () => {
                     </Link>
                   </>
                 )}
-                <Link className="mx-2">Dashboard</Link>
-                <Link className="mx-2" to="/profile">
-                  Profile
-                </Link>
               </ul>
             </div>
+            <label
+              htmlFor="mydashboard"
+              tabIndex={5}
+              className="btn btn-ghost btn-circle md:hidden lg:hidden"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h7"
+                />
+              </svg>
+            </label>
           </ul>
         </div>
       </div>

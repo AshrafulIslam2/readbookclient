@@ -126,7 +126,7 @@ const Profile = () => {
               {...register("phone")}
             />
             <label className="label">
-              <span className="label-text font-serif">Upload your</span>
+              <span className="label-text font-serif">Upload your Photo</span>
             </label>
             <input
               type="file"
