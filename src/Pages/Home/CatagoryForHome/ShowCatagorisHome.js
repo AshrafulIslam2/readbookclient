@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { authcontext } from "../../../AuthoContext/AuthContextProvider";
+import { FaGalacticRepublic, FaHome } from "react-icons/fa";
 
 const ShowCatagorisHome = ({ catagory, SetsignalProdutcs }) => {
   const { user } = useContext(authcontext);
+  console.log(catagory);
   return (
     <div className="">
       <div>
@@ -14,7 +16,14 @@ const ShowCatagorisHome = ({ catagory, SetsignalProdutcs }) => {
 
       <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 bg-gray-100">
         {catagory?.products?.map((product) => (
-          <div className="max-w-md p-6 rounded-md shadow-md bg-white dark:text-gray-50 flex flex-col items-center m-6">
+          <div className="max-w-sm p-6 rounded-md shadow-md bg-white dark:text-gray-50 flex flex-col items-center m-6">
+            {product.buletick && (
+              <h1 className=" w-full text-xl font-mono text-red-600 flex justify-end items-center font-extrabold">
+                <FaGalacticRepublic className="text-red-800 text-4xl" />{" "}
+                Verified
+              </h1>
+            )}
+
             <img
               src={product.productimg}
               alt=""
@@ -38,9 +47,14 @@ const ShowCatagorisHome = ({ catagory, SetsignalProdutcs }) => {
               <p>Resale Price {product.resaleprice}</p>
             </div>
             <div className="flex my-3">
-              <p>{product.buletick}</p>
-              <p className="text-base-300">{product.uploaddate}</p>
+              <p className="flex items-center pr-3">
+                <FaHome />
+                {product.location}
+              </p>
+
+              <p className="">Year of use {product.yearofuse}</p>
             </div>
+            <p className="text-base-300 pb-2">{product.uploaddate}</p>
             <label
               htmlFor="my-modal-6"
               className={`${

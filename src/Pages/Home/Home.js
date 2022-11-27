@@ -9,6 +9,7 @@ import HommeBanner from "./HomeBanner/HommeBanner";
 import PopularProduct from "./PopularProducts/PopularProduct";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Addproducts from "./Addproducts/Addproducts";
 
 const Home = () => {
   const [signalProdutcs, SetsignalProdutcs] = useState(null);
@@ -31,6 +32,7 @@ const Home = () => {
     <div className="max-w-[1040px] mx-auto ">
       <HommeBanner></HommeBanner>
       <PopularProduct></PopularProduct>
+      <Addproducts></Addproducts>
       {catagories.map((catagory) => (
         <ShowCatagorisHome
           key={catagory._id}

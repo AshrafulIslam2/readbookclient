@@ -1,20 +1,31 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { authcontext } from "../../AuthoContext/AuthContextProvider";
 import axios from "axios";
 const AllmyProducts = () => {
   const { user } = useContext(authcontext);
   const [advertise, setAdvertise] = useState(null);
-  axios
-    .post("http://localhost:4000/advertise", {
-      advertise,
-    })
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  useEffect(() => {
+    if (advertise !== null) {
+      fetch("http://localhost:4000/advertise", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(advertise),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+    }
+  }, [advertise]);
+  //   axios
+  //     .post("http://localhost:4000/advertise", {
+  //       advertise,
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
 
   const { data: Catagorise = [] } = useQuery({
     queryKey: ["sellerproducts", user?.email],
@@ -32,8 +43,8 @@ const AllmyProducts = () => {
         Add products
       </button>
       <div className="grid sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-3 gap-5 my-10 mx-5">
-        {Catagorise.map((catagory) =>
-          catagory.map((product) => (
+        {Catagorise?.map((catagory) =>
+          catagory?.map((product) => (
             <div className="card  w-48 bg-base-100 shadow-xl image-full">
               <figure>
                 <img src={product.productimg} alt="Shoes" />
