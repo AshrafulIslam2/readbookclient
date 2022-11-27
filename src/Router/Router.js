@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import AdminPrivetRoute from "../AdminPrivetRoute/AdminPrivetRoute";
 import DashboardLayout from "../Layout/Main/Dashboard/DashboardLayout";
 import Main from "../Layout/Main/Main";
 import AllProductsCatagorisWise from "../Pages/AllproductsCatagorisWies/AllProductsCatagorisWise";
@@ -62,7 +63,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/admin",
-        element: <Alluser></Alluser>,
+        element: (
+          <AdminPrivetRoute>
+            <Alluser></Alluser>
+          </AdminPrivetRoute>
+        ),
       },
     ],
   },
