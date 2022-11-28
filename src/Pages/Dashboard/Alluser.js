@@ -7,7 +7,7 @@ const Alluser = () => {
   const { data: allUser = [], refetch } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:4000/user`);
+      const res = await fetch(`https://y-tan-one.vercel.app/user`);
       const data = res.json();
       return data;
     },
@@ -15,7 +15,7 @@ const Alluser = () => {
   console.log(allUser);
   const handleupdate = (id, semail, uemail) => {
     fetch(
-      `http://localhost:4000/user/admin/verify/${id}/seller/${semail}?email=${uemail}`,
+      `https://y-tan-one.vercel.app/user/admin/verify/${id}/seller/${semail}?email=${uemail}`,
       {
         method: "PUT",
         headers: { "content-type": "application/json" },
@@ -28,7 +28,7 @@ const Alluser = () => {
       });
   };
   const handledelte = (id, email) => {
-    fetch(`http://localhost:4000/admin/delete/${id}/${email}`, {
+    fetch(`https://y-tan-one.vercel.app/admin/delete/${id}/${email}`, {
       method: "DELETE",
       headers: { "content-type": "application/json" },
     })

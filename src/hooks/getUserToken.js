@@ -1,7 +1,7 @@
 import axios, { isCancel, AxiosError } from "axios";
 
 const getUserToken = (email) => {
-  const url = `http://localhost:4000/jwt?email=${email}`;
+  const url = `https://y-tan-one.vercel.app/jwt?email=${email}`;
   axios.get(url).then((data) => {
     localStorage.setItem({ accessToken: data });
   });

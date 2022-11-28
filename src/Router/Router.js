@@ -32,7 +32,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:4000/catagoris/${params.id}`),
+          fetch(`https://y-tan-one.vercel.app/catagoris/${params.id}`),
       },
       {
         path: "/registration",
@@ -75,6 +75,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/seller",
         element: <AllmyProducts></AllmyProducts>,
+      },
+      {
+        path: "/dashboard/seller/add",
+        element: <Addsellerproducts></Addsellerproducts>,
       },
     ],
   },

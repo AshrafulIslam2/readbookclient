@@ -31,7 +31,7 @@ const BookingModal = ({ signalProdutcs }) => {
     mutate(bookinifo);
   };
   const bookingifon = async (data) => {
-    return axios.post("http://localhost:4000/bookininfo", data);
+    return axios.post("https://y-tan-one.vercel.app/bookininfo", data);
   };
 
   const { mutate, isLoading } = useMutation(bookingifon, {

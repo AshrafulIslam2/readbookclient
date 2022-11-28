@@ -7,7 +7,7 @@ const Addproducts = () => {
   const { data: addproducts = [] } = useQuery({
     queryKey: ["sellerproducts", user?.email],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:4000/advertise`);
+      const res = await fetch(`https://y-tan-one.vercel.app/advertise`);
       const data = res.json();
       return data;
     },

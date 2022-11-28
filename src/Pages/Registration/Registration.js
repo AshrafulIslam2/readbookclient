@@ -33,7 +33,7 @@ const Registration = () => {
         console.log(user);
         //save user
         axios
-          .post("http://localhost:4000/user", {
+          .post("https://y-tan-one.vercel.app/user", {
             email: data.email,
             role: data.role,
           })

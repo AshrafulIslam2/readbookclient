@@ -38,7 +38,7 @@ const Addsellerproducts = () => {
             location: data.location,
             yearofuse: data.yearofuse,
           };
-          fetch(`http://localhost:4000/saller/upload`, {
+          fetch(`https://y-tan-one.vercel.app/saller/upload`, {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(uploadproducts),

@@ -1,5 +1,5 @@
 const getCatagories = async () => {
-  const res = await fetch("http://localhost:4000/catagoris");
+  const res = await fetch("https://y-tan-one.vercel.app/catagoris");
   const data = await res.json();
   return data;
 };

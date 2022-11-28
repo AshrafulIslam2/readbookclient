@@ -10,7 +10,7 @@ const AllmyProducts = () => {
   const [advertise, setAdvertise] = useState(null);
   useEffect(() => {
     if (advertise !== null) {
-      fetch("http://localhost:4000/advertise", {
+      fetch("https://y-tan-one.vercel.app/advertise", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(advertise),
@@ -25,7 +25,7 @@ const AllmyProducts = () => {
     }
   }, [advertise]);
   //   axios
-  //     .post("http://localhost:4000/advertise", {
+  //     .post("https://y-tan-one.vercel.app/advertise", {
   //       advertise,
   //     })
   //     .then((data) => {
@@ -43,7 +43,7 @@ const AllmyProducts = () => {
     queryKey: ["sellerproducts", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:4000/sellerproducts/${user?.email}`
+        `https://y-tan-one.vercel.app/sellerproducts/${user?.email}`
       );
       const data = res.json();
       return data;
@@ -52,7 +52,7 @@ const AllmyProducts = () => {
   // const handledelte = (id, user, name, catagoryname) => {
   //   console.log(catagoryname);
   //   fetch(
-  //     `http://localhost:4000/sellerproducts/seller/${id}/${user?.email}/${name}/${catagoryname}`,
+  //     `https://y-tan-one.vercel.app/sellerproducts/seller/${id}/${user?.email}/${name}/${catagoryname}`,
   //     {
   //       method: "DELETE",
   //       headers: { "content-type": "application/json" },
@@ -71,7 +71,7 @@ const AllmyProducts = () => {
   return (
     <div>
       <button className="bg-teal-700  text-xs text-white rounded btn pt-0">
-        <Link to="/dashboard/seller/padd">add products</Link>
+        <Link to="/dashboard/seller/add">add products</Link>
       </button>
       <ToastContainer />
       <div className="grid sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-3 gap-5 my-10 mx-5">

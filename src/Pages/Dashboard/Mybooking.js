@@ -5,7 +5,7 @@ import { authcontext } from "../../AuthoContext/AuthContextProvider";
 const Mybooking = () => {
   const { user } = useContext(authcontext);
   console.log(user.email);
-  const url = `http://localhost:4000/bookininfo?email=${user?.email}`;
+  const url = `https://y-tan-one.vercel.app/bookininfo?email=${user?.email}`;
   const { data: bookings = [] } = useQuery({
     queryKey: ["userbookininfo", user?.email],
     queryFn: async () => {
