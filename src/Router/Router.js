@@ -4,9 +4,11 @@ import DashboardLayout from "../Layout/Main/Dashboard/DashboardLayout";
 import Main from "../Layout/Main/Main";
 import AllProductsCatagorisWise from "../Pages/AllproductsCatagorisWies/AllProductsCatagorisWise";
 import Blog from "../Pages/Blog/Blog";
+import Addsellerproducts from "../Pages/Dashboard/Addsellerproducts";
 import AllmyProducts from "../Pages/Dashboard/AllmyProducts";
 import Alluser from "../Pages/Dashboard/Alluser";
 import Mybooking from "../Pages/Dashboard/Mybooking";
+import Error from "../Pages/Error";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Profile from "../Pages/Profile/Profile";
@@ -75,6 +77,10 @@ const router = createBrowserRouter([
         element: <AllmyProducts></AllmyProducts>,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <Error></Error>,
   },
 ]);
 export default router;

@@ -15,7 +15,7 @@ const Addproducts = () => {
   return (
     <div>
       <h1 className="text-center text-2xl my-6 font-bold  tracking-widest font-serif text-black">
-        Don't Forget to read those books
+        Don't Forget to read those books Add section
       </h1>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 sm:grid-cols-2">
         {addproducts.map((add) => (

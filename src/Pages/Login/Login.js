@@ -8,10 +8,12 @@ import useToken from "../../hooks/useToken";
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { setLoading, Loading } = useContext(authcontext);
   const [createdemail, SetCreateduseremail] = useState("");
   const [token] = useToken(createdemail);
   const from = location?.state?.from?.pathname || "/";
   if (token) {
+    setLoading(false);
     toast.success("Login successfull");
     navigate(from, { replace: true });
   }
@@ -29,6 +31,10 @@ const Login = () => {
         const user = userCredential.user;
         console.log(user);
         SetCreateduseremail(email);
+        setLoading(true);
+        if (Loading) {
+          return <h1 className="text-5xl">please wait</h1>;
+        }
       })
       .catch((error) => {
         console.error(error);

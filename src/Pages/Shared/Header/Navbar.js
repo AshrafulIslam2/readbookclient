@@ -9,7 +9,6 @@ const Navbar = () => {
   const links = [
     { name: "Home", path: "/" },
     { name: "Blogs", path: "/blog" },
-    { name: "Allbooks", path: "/allbooks" },
   ];
   const { user, logout } = useContext(authcontext);
   const logoutuser = () => {

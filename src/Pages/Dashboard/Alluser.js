@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import { authcontext } from "../../AuthoContext/AuthContextProvider";
 const Alluser = () => {
   const { user } = useContext(authcontext);
@@ -26,8 +27,21 @@ const Alluser = () => {
         refetch();
       });
   };
+  const handledelte = (id, email) => {
+    fetch(`http://localhost:4000/admin/delete/${id}/${email}`, {
+      method: "DELETE",
+      headers: { "content-type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast.success("Delete Success Full");
+        refetch();
+      });
+  };
   return (
     <div className="overflow-x-auto max-w-full">
+      <ToastContainer />
       <h1 className="text-4xl font-serif text-center my-10">All User </h1>
       <table className="table w-full  max-w-full mx-4">
         {/* <!-- head --> */}
@@ -46,7 +60,12 @@ const Alluser = () => {
               <td>{us?.role}</td>
               <th>
                 {us?.role !== "admin" && (
-                  <button className="btn btn-error btn-xs mx-3">Delete</button>
+                  <button
+                    className="btn btn-error btn-xs mx-3"
+                    onClick={() => handledelte(us?._id, us?.email)}
+                  >
+                    Delete
+                  </button>
                 )}
                 {us?.role === "seller" && !us?.varify && (
                   <button
